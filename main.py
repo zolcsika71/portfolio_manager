@@ -19,12 +19,30 @@ DANELFIN_API_KEY = os.getenv("DANELFIN_API_KEY")
 
 
 def get_current_date_minus_days(days):
-    """Returns the current date minus a specified number of days."""
+    """Returns the current date minus a specified number of days.
+
+    Args:
+        days (int): The number of days to subtract from the current date.
+
+    Returns:
+        str: The resulting date formatted as a string according to DATE_FORMAT.
+    """
     return (datetime.now() - timedelta(days=days)).strftime(DATE_FORMAT)
 
 
 def fetch_stock_data(api_key, date):
-    """Fetch tops 100 AI-ranked stocks for a given date."""
+    """Fetch tops 100 AI-ranked stocks for a given date.
+
+    Args:
+        api_key (str): The API key for authentication with the Danelfin API.
+        Date (str): The date for which to fetch the stock data, formatted as 'YYYY-MM-DD'.
+
+    Returns:
+        dict: A dictionary containing the stock data for the specified date.
+
+    Raises:
+        ValueError: If the API request fails or returns a status code other than 200.
+    """
     headers = {"x-api-key": api_key}
     params = {"date": date}
     print(f"Requesting data for date: {date}")
@@ -37,7 +55,18 @@ def fetch_stock_data(api_key, date):
 
 
 def filter_stocks_by_risk(stock_data, date, risk_threshold):
-    """Filter stocks by low risk score for the given date."""
+    """Filter stocks by low risk score for the given date.
+
+    Args:
+        stock_data (dict): A dictionary containing stock data, where keys are dates
+                           and values are dictionaries of stock details.
+        date (str): The date for which to filter stocks, formatted as 'YYYY-MM-DD'.
+        risk_threshold (int): The minimum low risk score a stock must have to be included.
+
+    Returns:
+        list: A list of dictionaries, each containing the ticker and details of stocks
+              that meet or exceed the low risk score threshold for the specified date.
+    """
     return [
         {"ticker": ticker, **details}
         for ticker, details in stock_data.get(date, {}).items()
@@ -45,7 +74,17 @@ def filter_stocks_by_risk(stock_data, date, risk_threshold):
     ]
 
 def display_filtered_stocks(filtered_stocks):
-    """Display the filtered stocks in a table format with details."""
+    """Display the filtered stocks in a table format with details.
+
+    Args:
+        filtered_stocks (list): A list of dictionaries, each containing details of a stock
+                                that has passed the filtering criteria. Each dictionary
+                                should include keys such as 'ticker', 'aiscore', 'low_risk',
+                                'fundamental', 'technical', and 'sentiment'.
+
+    Returns:
+        None: This function prints the filtered stocks to the console in a formatted table.
+    """
     print(f"Filtered {len(filtered_stocks)} stocks based on risk threshold.")
     print(tabulate(
         [
@@ -60,7 +99,17 @@ def display_filtered_stocks(filtered_stocks):
     ))
 
 def save_portfolio_to_csv(portfolio, filename):
-    """Save the filtered portfolio to a CSV file."""
+    """Save the filtered portfolio to a CSV file.
+
+    Args:
+        portfolio (list): A list of dictionaries, each representing a stock with keys such as
+                          'ticker', 'aiscore', 'low_risk', 'fundamental', 'technical', and 'sentiment'.
+        Filename (str): The name of the file where the portfolio will be saved, including the file extension.
+
+    Returns:
+        None: This function doesn't return a value. It writes the portfolio data to a CSV file
+              and prints a confirmation message upon successful saving.
+    """
     with open(filename, mode='w', newline='') as file:
         writer = csv.writer(file)
         writer.writerow(["Ticker", "AI Score", "Low Risk Score", "Fundamentals", "Technical", "Sentiment"])
