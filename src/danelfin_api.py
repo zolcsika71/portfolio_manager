@@ -2,6 +2,7 @@ import os
 import requests
 import csv
 from tabulate import tabulate
+import yfinance as yf  # <-- NEW
 
 # Constants
 API_URL = "https://apirest.danelfin.com/ranking"
