@@ -40,7 +40,7 @@ def main():
     parser.add_argument(
         "--min_low_risk_score",
         type=int,
-        default=6,
+        default=2,
         help="Minimum low-risk score to filter on. Default is 6."
     )
     parser.add_argument(
