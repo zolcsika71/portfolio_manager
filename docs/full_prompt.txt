@@ -1,1 +1,65 @@
-HWC,WBS,CMA,BPOP,FIBK,UBSI,UCB,WTFC,THFF,WSFS,HBCP,CFR,SSB,RY,FBIZ,BOH,USB,SBCF,CATY,FRME,FFBC,CM,AUB,OFG,ZION,PEBO,FCF,WSBC,PB,FHB,LKFN,BAC,RNST,TFC,WAFD,MSBIP,MSBI,EQBK,BFST,PCB,MBWM,TCBK,GSBC,ESSA,JPM,BMO,BOKF,CHMG,BCML,WFC
+H**Objective:** Design a comprehensive and user-friendly portfolio manager application utilizing FastAPI and a graphical user interface (GUI), ensuring compatibility with OpenAI Assistant and other GPTs.
+
+0. **External APIs:**
+   - List the APIs that will be integrated into the application, including:
+     - Danelfin
+     - Hugging Face
+     - OpenAI
+     - Claude Sonnet 3.5
+     - Perplexity
+     - Yahoo Finance
+   - Consider utilizing OpenRouter for access to various AI APIs.
+   - Incorporate the latest Python finance libraries to enhance functionality.
+
+1. **Contextual Background:**
+   - Outline the primary features desired in the portfolio manager application, such as:
+     - Investment tracking.
+     - Asset allocation analysis.
+     - Performance metrics and reporting.
+     - Historical data visualization.
+   - Specify the types of assets to be managed, including:
+     - Stocks.
+     - Bonds.
+     - Cryptocurrencies.
+     - Any specific APIs you plan to use for financial data and trading operations.
+
+2. **Target Audience:**
+   - Identify the intended users of the application, such as:
+     - Individual investors seeking personal finance tools.
+     - Financial advisors managing client portfolios.
+     - Institutional investors requiring robust analytics.
+   - Describe their specific needs, including user-friendly interfaces, real-time data access, and comprehensive reporting capabilities.
+
+3. **Functional Requirements:**
+   - List the core functionalities that the application should include, such as:
+     - User authentication and account management (registration, login, password recovery).
+     - Integration with financial data APIs for real-time data retrieval and updates.
+     - Portfolio performance analysis including visual tools (charts, graphs).
+     - Alerts and notifications for significant market changes (price thresholds, news updates).
+
+4. **Technical Specifications:**
+   - Specify the preferred technology stack, including:
+     - Programming language (Python for FastAPI).
+     - Frontend framework (e.g., React, Vue.js).
+     - Database system (e.g., PostgreSQL, MongoDB).
+   - Identify any specific constraints or requirements, such as:
+     - Mobile compatibility (responsive design).
+     - Cloud hosting options (e.g., AWS, Azure).
+
+5. **Design Considerations:**
+   - Describe any design preferences or user experience guidelines, such as:
+     - Should the interface be minimalist or feature-rich?
+     - Accessibility considerations (color contrast, keyboard navigation).
+     - User-friendly navigation and layout (dashboard design).
+
+6. **Output Format:**
+   - Provide the response in a structured format that includes:
+     - A breakdown of the application’s architecture, specifying backend and frontend interactions.
+     - A list of APIs to be used, detailing their functions, endpoints, and authentication methods.
+     - Sample code snippets or pseudocode to illustrate key functionalities, such as API integration and data handling.
+     - Any relevant diagrams (architecture, user flow) if necessary.
+
+**Instructions for Response:**
+- Use clear, technical language suitable for a developer audience.
+- Ensure the response is detailed, covering all aspects outlined above, and formatted in Markdown for readability.
+
