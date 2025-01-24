@@ -1,9 +1,0 @@
-Goal: Develop a detailed zsh script that establishes a well-organized project structure for a portfolio manager application that utilizes FastAPI for the backend and incorporates a graphical user interface (GUI).
-
-Context and Details: The project will require a specific directory layout to facilitate the development of both backend and frontend components, as well as integration with several APIs including Danelfin, Hugging Face, OpenAI, Yahoo Finance, and Perplexity. The script should create the following main folders:
-
-backend: This folder will contain the FastAPI application code and related files.
-frontend: This folder will house the GUI components, potentially using frameworks like React or Vue.js.
-database: This folder will be used for database setup scripts and configurations, allowing for seamless data management.
-docs: This folder should include project documentation files for easy reference and onboarding of new developers.
-Output Structure Guidance: The output should be a zsh script that clearly outlines the commands to create the aforementioned directory structure. Additionally, include comments within the script to explain each section and the purpose of the created folders for clarity and future reference.
