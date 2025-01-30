@@ -17,3 +17,5 @@ Pipfile.lock
 
 # Ignore system files
 .DS_Store
+
+/docs/*.*
