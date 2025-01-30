@@ -1,9 +1,9 @@
-from typing import Optional, List
-from pydantic import BaseModel, Field
 from datetime import date
+from typing import Optional
+from pydantic import BaseModel, Field
 
 class DanelfinRequest(BaseModel):
-    date: Optional[date] = Field(default=None, description="Query date in YYYY-MM-DD format")
+    date: date | None = Field(default=None, description="Query date in YYYY-MM-DD format")
     ticker: Optional[str] = Field(default=None, max_length=10, description="Ticker unique identifier (e.g., PYPL, AMZN, AAPL)")
     market: Optional[str] = Field(default=None, description="Market type, defaults to 'USA', can be 'europe'")
     aiscore: Optional[int] = Field(default=None, ge=1, le=10, description="AI score (1-10)")
