@@ -1,38 +1,39 @@
-from enum import Enum  # Move this to the top
-from datetime import date, timedelta
+# src/models.py
+from datetime import date
+from enum import Enum
 from typing import Optional
 from pydantic import BaseModel, Field
 
-class MarketType(str, Enum):
-    STOCK = "Stock"
-    FOREX = "Forex"
-    CRYPTO = "Crypto"
+class ScoreType(str, Enum):
+    AISCORE = "aiscore"
+    TECHNICAL = "technical"
+    LOW_RISK = "low_risk"
+    SENTIMENT = "sentiment"
+    FUNDAMENTAL = "fundamental"
 
-market: Optional[MarketType] = Field(
-    default=None,
-    description="Select the market type (e.g., Stock, Forex, Crypto)."
-)
+class SectorList(str, Enum):
+    COMMUNICATION = "communication-services"
+    CONSUMER_DISCRETIONARY = "consumer-discretionary"
+    CONSUMER_STAPLES = "consumer-staples"
+    ENERGY = "energy"
+    FINANCIALS = "financials"
+    HEALTH_CARE = "health-care"
+    INDUSTRIALS = "industrials"
+    TECHNOLOGY = "information-technology"
+    MATERIALS = "materials"
+    REAL_ESTATE = "real-estate"
+    UTILITIES = "utilities"
 
-from enum import Enum
 class DanelfinRequest(BaseModel):
-    class DanelfinRequest(BaseModel):
-        date: Optional[date]
-        ticker: Optional[str]
-        market: Optional[str]
-        aiscore: Optional[int]
-    fundamental: Optional[int] = Field(default=None, ge=1, le=10, description="Fundamental score (1-10).")
-    technical: Optional[int] = Field(default=None, ge=1, le=10, description="Technical score (1-10).")
-    sentiment: Optional[int] = Field(default=None, ge=1, le=10, description="Sentiment score (1-10).")
-    low_risk: Optional[int] = Field(default=None, ge=1, le=10, description="Low-risk score (1-10).")
-    buy_track_record: Optional[bool] = Field(default=None, description="Include buy track record.")
-    sell_track_record: Optional[bool] = Field(default=None, description="Include sell track record.")
-    sector: Optional[str] = Field(default=None, description="Select the sector.")
-    industry: Optional[str] = Field(default=None, description="Select the industry.")
-    fields: Optional[str] = Field(
-        default=None,
-        description="Feature disabled.",
-        deprecated=True
-    )
+    date: Optional[date] = None
+    ticker: Optional[str] = None
+    score_type: Optional[ScoreType] = None
+    score_value: Optional[int] = Field(None, ge=1, le=10)
+    buy_track_record: Optional[bool] = None
+    sell_track_record: Optional[bool] = None
+    sector: Optional[SectorList] = None
+    industry: Optional[str] = None
+    fields: Optional[str] = None
 
 
 
