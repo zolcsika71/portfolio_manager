@@ -2,10 +2,14 @@ import subprocess
 import os
 import time
 
+
 # Define paths
 BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 FASTAPI_MODULE = "src.main:app"  # Adjusted to match the new structure
 STREAMLIT_SCRIPT = os.path.join(BASE_DIR, "src", "streamlit_app.py")
+
+
+
 
 
 # Function to start FastAPI server
