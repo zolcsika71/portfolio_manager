@@ -21,7 +21,7 @@ def main():
         try:
             url = f"https://apirest.danelfin.com/ranking?ticker={ticker}"
             headers = {
-                "x-api-key": DANELFIN_API_KEY,  # Replace with your actual API key
+                "x-api-key": DANELFIN_API_KEY,  # Replace it with your actual API key
             }
 
             # Fetch data
