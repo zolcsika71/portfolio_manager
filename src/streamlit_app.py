@@ -17,19 +17,15 @@ def fetch_data(request: DanelfinRequest):
         return None
 
 def fetch_tickers():
-    """
-    Fetch all available tickers that have buy records from Danelfin API.
-    This assumes the endpoint returns a simple JSON array of ticker symbols.
-    """
     try:
-        with httpx.Client() as client:
-            # Hypothetical endpoint filtering tickers by buy records
+        with httpx.Client(timeout=30.0) as client:  # Increase timeout to 30s
             response = client.get("http://localhost:8000/api/tickers?filter=with_buy_records")
             response.raise_for_status()
             return response.json()
     except httpx.HTTPError as e:
-        st.error(f"Failed to retrieve ticker list: {e}")
+        # Handle the error case
         return []
+
 
 
 def main():

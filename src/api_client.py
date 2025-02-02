@@ -18,7 +18,7 @@ class DanelfinClient:
     async def get_data(self, params: DanelfinRequest):
         async with httpx.AsyncClient() as client:
             try:
-                query_params = {k: v for k, v in params.dict(exclude_none=True).items()}
+                query_params = dict(params.dict(exclude_none=True).items())
                 if params.date:
                     query_params['date'] = params.date.strftime('%Y-%m-%d')
 
@@ -32,10 +32,15 @@ class DanelfinClient:
 
             except httpx.HTTPStatusError as e:
                 logger.error(f"HTTP error {e.response.status_code}: {e.response.text}")
-                raise Exception(f"API responded with error {e.response.status_code}: {e.response.text}")
-            except httpx.TimeoutException:
+# sourcery skip: raise-specific-error
+                raise Exception(
+                    f"API responded with error {e.response.status_code}: {e.response.text}"
+                ) from e
+            except httpx.TimeoutException as e:
                 logger.error("Request timed out")
-                raise Exception("API request timed out")
+# sourcery skip: raise-specific-error
+                raise Exception("API request timed out") from e
             except httpx.RequestError as e:
                 logger.error(f"Network error: {str(e)}")
-                raise Exception("Network error while connecting to API")
+# sourcery skip: raise-specific-error
+                raise Exception("Network error while connecting to API") from e
